@@ -2068,7 +2068,7 @@ input, select, textarea {
 		position: relative;
 		background: #ffffff;
 		border-bottom: solid 1px #ccc;
-		padding: 5em 0 4em 0;
+		padding: 0.1em 0 4em 0;
 		text-align: center;
 	}
 
@@ -2180,7 +2180,7 @@ input, select, textarea {
 		text-align: center;
 		position: relative;
 		padding: 8em 0;
-		margin: 4em 0 0 0;
+		margin: 3em 0 0 0;
 	}
 
 		#banner header {
@@ -2390,14 +2390,14 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				padding: 4em 0 3em 0;
+				padding: 0.1em 0 3em 0;
 			}
 
 		/* Banner */
 
 			#banner {
 				padding: 6em 0;
-				margin: 3em 0 0 0;
+				margin: 2em 0 0 0;
 			}
 
 		/* Intro */
@@ -2482,7 +2482,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				padding: 3.5em 0 3em 0;
+				padding: 0.1em 0 3em 0;
 			}
 
 		/* Nav */
@@ -2845,7 +2845,7 @@ input, select, textarea {
 
 			#header {
 				text-align: center;
-				padding: 2em 0;
+				padding: 1em 0;
 			}
 
 				#header h1 {
