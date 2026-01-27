@@ -1,0 +1,47 @@
+#top-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  padding:50px 20px;
+  background:#fff;
+  border-bottom:1px solid #eee;
+}
+
+#top-header .header-image .logo{ /* light override removed; .logo controls appearance globally */ }
+
+#top-header .header-content{
+  text-align:left;
+}
+
+#top-header .header-content h1{
+  margin:0;
+  font-size:3em;
+  font-weight:800;
+  color:#252122;
+  line-height:1.1;
+}
+
+#top-header .header-content p{
+  margin:5px 0 20px 0;
+  font-size:1.2em;
+  color:#777;
+  letter-spacing:1px;
+}
+
+#top-header .social{
+  font-size:1.5em;
+  display:flex;
+  gap:20px;
+}
+
+#top-header .social a{
+  color:#d52349;
+  text-decoration:none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width:768px){
+  #top-header{flex-direction:column; text-align:center; padding:30px 20px;}
+  #top-header .header-content{ text-align:center; }
+}
