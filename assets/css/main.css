@@ -2906,3 +2906,12 @@ input, select, textarea {
 			}
 
 	}
+
+/* Logo image used in site header */
+.logo {
+	width: 17%;
+	border-radius: 45%;
+	display: block;
+	margin: 0 auto 8px;
+	/* border: 2px solid #252122; */
+}
