@@ -62,6 +62,9 @@
 
 /* Responsive adjustments */
 @media screen and (max-width:768px){
-  #top-header{flex-direction:column; text-align:center; padding:30px 20px;}
+  #top-header{flex-direction:column; text-align:center; padding:30px 20px; gap:20px; align-items:center;}
+  #top-header .header-image{ text-align:center; }
+  #top-header .header-image .logo{ display:inline-block; }
   #top-header .header-content{ text-align:center; }
+  #top-header .social{ justify-content:center; margin-top:8px; }
 }
