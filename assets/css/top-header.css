@@ -4,9 +4,8 @@
   justify-content: center;
   gap: 40px;
   padding: 50px 20px;
-  background-color: #fff;
+  background-color: #5e5e5e36;
   position: relative;
-  border-bottom: 1px solid #eee;
 }
 
 #top-header::before {
@@ -15,10 +14,6 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image:
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0.025)),
-    repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 20px),
-    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08' fill='%23000' /%3E%3C/svg%3E");
   background-repeat: repeat, repeat, repeat;
   background-size: auto, 20px 20px, 80px 80px;
 }
@@ -39,8 +34,9 @@
   margin: 0;
   font-size: 3em;
   font-weight: 800;
-  color: #252122;
+  color: #ffffff;
   line-height: 1.1;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 #top-header .header-content p {
@@ -60,6 +56,7 @@
 #top-header .social a {
   color: #d52349;
   text-decoration: none;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive adjustments */
@@ -97,11 +94,14 @@
   /* Esto centra el bloque <p> dentro del container */
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+  /* Added margin for spacing */
 }
 
 #typing-text {
   font-family: 'IBM Plex Sans', sans-serif;
-  color: #3B3B3B;
+  color: #cfcfcf;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 1);
   font-size: 24px;
   font-weight: 600;
   margin: 0;
