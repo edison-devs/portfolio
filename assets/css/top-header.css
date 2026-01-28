@@ -68,3 +68,37 @@
   #top-header .header-content{ text-align:center; }
   #top-header .social{ justify-content:center; margin-top:8px; }
 }
+
+  /* Typing banner styles (scoped to header area) */
+  .banner-container{ padding:8px 0; }
+
+  #typing-text{
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #3B3B3B;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: pre; /* Importante para respetar espacios del JSON */
+  }
+
+  /* El cursor animado */
+  #typing-text::after{
+    content: "|";
+    margin-left: 6px;
+    color: #3B3B3B;
+    animation: th-blink 0.8s infinite;
+  }
+
+  @keyframes th-blink{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0; }
+  }
+
+  /* Estilo opcional por si quieres que el JSON parezca código */
+  .code-mode{
+    font-family: 'Fira Code', monospace !important;
+    color: #d19a66 !important;
+    background: #252122;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
