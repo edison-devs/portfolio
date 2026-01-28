@@ -1,110 +1,140 @@
-#top-header{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:40px;
-  padding:50px 20px;
+#top-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px 20px;
   background-color: #fff;
   position: relative;
-  border-bottom:1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
-#top-header::before{
+#top-header::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(to bottom, rgba(255,255,255,0.025), rgba(0,0,0,0.025)),
-    repeating-linear-gradient(135deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 20px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0.025)),
+    repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 20px),
     url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08' fill='%23000' /%3E%3C/svg%3E");
   background-repeat: repeat, repeat, repeat;
   background-size: auto, 20px 20px, 80px 80px;
 }
-#top-header > .header-image,
-#top-header > .header-content{
+
+#top-header>.header-image,
+#top-header>.header-content {
   position: relative;
   z-index: 1;
 }
 
-/* #top-header .header-image .logo{ /* light override removed; .logo controls appearance globally */ } */
+/* #top-header .header-image .logo { light override removed; .logo controls appearance globally } */
 
-#top-header .header-content{
-  text-align:left;
+#top-header .header-content {
+  text-align: left;
 }
 
-#top-header .header-content h1{
-  margin:0;
-  font-size:3em;
-  font-weight:800;
-  color:#252122;
-  line-height:1.1;
+#top-header .header-content h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 800;
+  color: #252122;
+  line-height: 1.1;
 }
 
-#top-header .header-content p{
-  margin:5px 0 20px 0;
-  font-size:1.2em;
-  color:#777;
-  letter-spacing:1px;
+#top-header .header-content p {
+  margin: 5px 0 20px 0;
+  font-size: 1.2em;
+  color: #777;
+  letter-spacing: 1px;
 }
 
-#top-header .social{
-  font-size:1.5em;
-  display:flex;
-  gap:20px;
+#top-header .social {
+  font-size: 1.5em;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
-#top-header .social a{
-  color:#d52349;
-  text-decoration:none;
+#top-header .social a {
+  color: #d52349;
+  text-decoration: none;
 }
 
 /* Responsive adjustments */
-@media screen and (max-width:768px){
-  #top-header{flex-direction:column; text-align:center; padding:30px 20px; gap:20px; align-items:center;}
-  #top-header .header-image{ text-align:center; }
-  #top-header .header-image .logo{ display:inline-block; }
-  #top-header .header-content{ text-align:center; }
-  #top-header .social{ justify-content:center; margin-top:8px; }
+@media screen and (max-width:768px) {
+  #top-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #top-header .header-image {
+    text-align: center;
+  }
+
+  #top-header .header-image .logo {
+    display: inline-block;
+  }
+
+  #top-header .header-content {
+    text-align: center;
+  }
+
+  #top-header .social {
+    justify-content: center;
+    margin-top: 8px;
+  }
 }
 
 /* Typing banner styles (scoped to header area) */
 .banner-container {
-    width: 95%;
-    display: flex;
-    /* Esto centra el bloque <p> dentro del container */
-    justify-content: center; 
-    align-items: center;
+  width: 95%;
+  display: flex;
+  /* Esto centra el bloque <p> dentro del container */
+  justify-content: center;
+  align-items: center;
 }
 
 #typing-text {
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: #3B3B3B;
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0;
-    white-space: pre; 
-    line-height: 1.4;
-    /* El truco: el P solo mide lo que mide el texto, permitiendo que Flex lo centre */
-    width: fit-content;
-    text-align: left; /* El texto ADENTRO siempre alineado a la izquierda */
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #3B3B3B;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  white-space: pre;
+  line-height: 1.4;
+  /* El truco: el P solo mide lo que mide el texto, permitiendo que Flex lo centre */
+  width: fit-content;
+  text-align: left;
+  /* El texto ADENTRO siempre alineado a la izquierda */
 }
 
 #typing-text::after {
-    content: "|";
-    margin-left: 2px;
-    animation: blink 0.8s infinite;
+  content: "|";
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* MEDIA QUERY: Solo para ajustar tamaño de fuente, sin romper el centrado */
 @media (max-width: 600px) {
-    #typing-text {
-        font-size: 16px; /* Más pequeño para que el JSON no se desborde */
-    }
+  #typing-text {
+    font-size: 16px;
+    /* Más pequeño para que el JSON no se desborde */
+  }
 }
