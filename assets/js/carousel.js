@@ -10,8 +10,8 @@
             function getItemsToShow() {
                 if (!isMain) return 1;
                 if (window.innerWidth <= 480) return 1;
-                if (window.innerWidth <= 736) return 2;
-                return 3;
+                if (window.innerWidth <= 736) return 1;
+                return 2;
             }
 
             function generateDots() {

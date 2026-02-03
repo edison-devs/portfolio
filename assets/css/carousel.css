@@ -102,13 +102,24 @@
 .inner-carousel-item {
     min-width: 100%;
     box-sizing: border-box;
+    /* Styles for centering removed as we are forcing width 100% */
+    background-color: #f9f9f9;
+    /* Optional subtle background */
+    /* Padding to create safe gap and white border visual */
+    padding: 0 2px;
+}
+
+.inner-carousel-item:last-child {
+    border-right: none;
 }
 
 .inner-carousel-item img {
     width: 100%;
+    max-width: 100%;
     display: block;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    /* Ensures entire image is visible without cropping, stretched to fit width if needed */
 }
 
 /* Internal Navigation (Arrows inside the card) */
@@ -148,13 +159,13 @@
 /* Responsive Overrides (Main Carousel) */
 @media screen and (min-width: 737px) {
     .carousel-item {
-        min-width: 33.333%;
+        min-width: 50%;
     }
 }
 
 @media screen and (max-width: 736px) {
     .carousel-item {
-        min-width: 50%;
+        min-width: 100%;
     }
 }
 
