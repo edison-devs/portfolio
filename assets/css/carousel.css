@@ -1,4 +1,4 @@
-/* Carousel Styles */
+/* Main Carousel Styles */
 .carousel-container {
     position: relative;
     max-width: 100%;
@@ -18,7 +18,7 @@
     padding: 0 15px;
 }
 
-/* Navigation Buttons */
+/* Navigation Buttons (Main) */
 .carousel-prev, .carousel-next {
     cursor: pointer;
     position: absolute;
@@ -34,7 +34,7 @@
     user-select: none;
     background-color: rgba(0,0,0,0.5);
     border: none;
-    z-index: 10;
+    z-index: 100;
 }
 
 .carousel-next {
@@ -51,7 +51,7 @@
     background-color: rgba(0,0,0,0.8);
 }
 
-/* Dots */
+/* Dots (Main only) */
 .carousel-dots {
     text-align: center;
     padding: 20px 0;
@@ -59,9 +59,9 @@
 
 .dot {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
@@ -69,9 +69,63 @@
 }
 
 .active, .dot:hover {
-    background-color: #717171;
+    background-color: #d52349; /* Matching template secondary color */
 }
 
+/* Internal Carousel Styles */
+.inner-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.inner-carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-out;
+}
+
+.inner-carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.inner-carousel-item img {
+    width: 100%;
+    display: block;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Internal Navigation (Arrows inside the card) */
+.inner-prev, .inner-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.inner-prev { left: 10px; }
+.inner-next { right: 10px; }
+
+.inner-prev:hover, .inner-next:hover {
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* Responsive Overrides (Main Carousel) */
 @media screen and (min-width: 737px) {
     .carousel-item {
         min-width: 33.333%;

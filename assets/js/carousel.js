@@ -1,80 +1,113 @@
 (function ($) {
     $(function () {
-        var $carousel = $('.carousel-container');
-        if (!$carousel.length) return;
 
-        var $track = $('.carousel-track');
-        var $items = $('.carousel-item');
-        var $dots = $('.dot');
-        var currentIndex = 0;
-        var itemsToShow = getItemsToShow();
+        function setupCarousel($container, isMain) {
+            var $track = $container.find(isMain ? '.carousel-track' : '.inner-carousel-track');
+            var $items = $container.find(isMain ? '.carousel-item' : '.inner-carousel-item');
+            var $dotsContainer = $container.find('.carousel-dots');
+            var currentIndex = 0;
 
-        function getItemsToShow() {
-            if (window.innerWidth <= 480) return 1;
-            if (window.innerWidth <= 736) return 2;
-            return 3;
+            function getItemsToShow() {
+                if (!isMain) return 1;
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 736) return 2;
+                return 3;
+            }
+
+            function generateDots() {
+                if (!isMain || !$dotsContainer.length) return;
+
+                $dotsContainer.empty();
+                var itemsToShow = getItemsToShow();
+                var maxIndex = Math.max(0, $items.length - itemsToShow);
+                var numDots = maxIndex + 1; // Number of possible views
+
+                for (var i = 0; i < numDots; i++) {
+                    $dotsContainer.append('<span class="dot" data-index="' + i + '"></span>');
+                }
+            }
+
+            function updateCarousel() {
+                var itemsToShow = getItemsToShow();
+                var itemWidth = $items.outerWidth(true);
+                var maxIndex = Math.max(0, $items.length - itemsToShow);
+
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+                var translateX = -(currentIndex * itemWidth);
+                $track.css('transform', 'translateX(' + translateX + 'px)');
+
+                var $dots = $dotsContainer.find('.dot');
+                if ($dots.length && isMain) {
+                    $dots.removeClass('active');
+                    $dots.eq(currentIndex).addClass('active');
+                }
+            }
+
+            generateDots();
+
+            $container.find(isMain ? '.carousel-next' : '.inner-next').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var itemsToShow = getItemsToShow();
+                var maxIndex = $items.length - itemsToShow;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            });
+
+            $container.find(isMain ? '.carousel-prev' : '.inner-prev').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var itemsToShow = getItemsToShow();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = Math.max(0, $items.length - itemsToShow);
+                }
+                updateCarousel();
+            });
+
+            $dotsContainer.on('click', '.dot', function () {
+                var index = $(this).data('index');
+                currentIndex = index;
+                updateCarousel();
+            });
+
+            $(window).on('resize', function () {
+                generateDots();
+                updateCarousel();
+            });
+
+            if (isMain) {
+                var autoPlayInterval = setInterval(function () {
+                    $container.find('.carousel-next').trigger('click');
+                }, 5000);
+
+                $container.hover(function () {
+                    clearInterval(autoPlayInterval);
+                }, function () {
+                    autoPlayInterval = setInterval(function () {
+                        $container.find('.carousel-next').trigger('click');
+                    }, 5000);
+                });
+            }
+
+            setTimeout(updateCarousel, 150);
         }
 
-        function updateCarousel() {
-            var itemWidth = $items.outerWidth(true);
-            var maxIndex = Math.max(0, $items.length - getItemsToShow());
-
-            if (currentIndex > maxIndex) currentIndex = maxIndex;
-
-            var translateX = -(currentIndex * itemWidth);
-            $track.css('transform', 'translateX(' + translateX + 'px)');
-
-            // Update dots active state
-            $dots.removeClass('active');
-            var dotIndex = Math.floor(currentIndex / getItemsToShow());
-            $dots.eq(dotIndex).addClass('active');
-        }
-
-        $('.carousel-next').on('click', function () {
-            var maxIndex = $items.length - getItemsToShow();
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Loop back to start
-            }
-            updateCarousel();
+        $('.carousel-container').each(function () {
+            setupCarousel($(this), true);
         });
 
-        $('.carousel-prev').on('click', function () {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = Math.max(0, $items.length - getItemsToShow()); // Go to end
-            }
-            updateCarousel();
-        });
+        setTimeout(function () {
+            $('.inner-carousel-container').each(function () {
+                setupCarousel($(this), false);
+            });
+        }, 200);
 
-        $('.dot').on('click', function () {
-            var index = $(this).data('index');
-            currentIndex = index * getItemsToShow();
-            updateCarousel();
-        });
-
-        $(window).on('resize', function () {
-            itemsToShow = getItemsToShow();
-            updateCarousel();
-        });
-
-        // Auto-play (optional)
-        var autoPlayInterval = setInterval(function () {
-            $('.carousel-next').click();
-        }, 5000);
-
-        // Pause auto-play on hover
-        $carousel.hover(function () {
-            clearInterval(autoPlayInterval);
-        }, function () {
-            autoPlayInterval = setInterval(function () {
-                $('.carousel-next').click();
-            }, 5000);
-        });
-
-        // Initial update
-        setTimeout(updateCarousel, 100);
     });
 })(jQuery);
