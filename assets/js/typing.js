@@ -37,14 +37,13 @@ function startTypingEffect(elementId, phrases, speed = 80, delay = 2000) {
 }
 
 const content = [
-    "¡Bienvenido a mi Portfolio!",
-    "Soy Ingeniero Backend",
+    "¡Bienvenido a mi portafolio!",
     {
-        role: "Ingeniero en Informática",
+        role: "Backend & Fullstack",
         status: "Disponible",
         coffee_driven: true
     },
-    "También soy Ingeniero en Informática"
+    "Ingeniero en Informática",
 ];
 
 document.addEventListener('DOMContentLoaded', () => {

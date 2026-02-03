@@ -18,8 +18,18 @@
     padding: 0 15px;
 }
 
+/* Reduced spacing for carousel item headers */
+.carousel-item .box header {
+    margin-bottom: 0.5em;
+}
+
+.carousel-item .box header p {
+    padding-bottom: 0.25em;
+}
+
 /* Navigation Buttons (Main) */
-.carousel-prev, .carousel-next {
+.carousel-prev,
+.carousel-next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -32,7 +42,7 @@
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     z-index: 100;
 }
@@ -47,8 +57,9 @@
     border-radius: 3px 0 0 3px;
 }
 
-.carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(0,0,0,0.8);
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Dots (Main only) */
@@ -68,8 +79,10 @@
     transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-    background-color: #d52349; /* Matching template secondary color */
+.active,
+.dot:hover {
+    background-color: #d52349;
+    /* Matching template secondary color */
 }
 
 /* Internal Carousel Styles */
@@ -99,7 +112,8 @@
 }
 
 /* Internal Navigation (Arrows inside the card) */
-.inner-prev, .inner-next {
+.inner-prev,
+.inner-next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -111,18 +125,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border: none;
     border-radius: 50%;
     z-index: 10;
     transition: background-color 0.3s;
 }
 
-.inner-prev { left: 10px; }
-.inner-next { right: 10px; }
+.inner-prev {
+    left: 10px;
+}
 
-.inner-prev:hover, .inner-next:hover {
-    background-color: rgba(0,0,0,0.7);
+.inner-next {
+    right: 10px;
+}
+
+.inner-prev:hover,
+.inner-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Responsive Overrides (Main Carousel) */
