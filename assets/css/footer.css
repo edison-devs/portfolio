@@ -1,41 +1,89 @@
 /* Footer Styles */
 #footer {
-    padding: 1.5em 0;
+    padding: 1.5em 0 1em 0;
+    /* Un poco más de aire arriba, menos abajo */
 }
 
-#footer .footer-content {
+#footer .footer-content,
+#footer .footer-map {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
-#footer .footer-content header {
-    margin-bottom: 0.75em;
+#footer header {
+    margin-bottom: 0.5em;
+    /* Reducido de 0.75em */
 }
 
+#footer header h2 {
+    font-size: 1.4em;
+    margin-bottom: 0.15em;
+    line-height: 1.2;
+}
+
+#footer header p {
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+/* Reducir espacio entre filas de contacto */
 #footer .contact-row {
-    margin-top: 0.5em;
+    margin-top: 0;
+}
+
+#footer .contact-row>div {
+    padding-top: 0.5em !important;
+    /* Forzar reducción de espacio entre columnas apiladas */
+    padding-bottom: 0.5em !important;
+}
+
+#footer .contact-card {
+    margin-bottom: 0;
 }
 
 #footer .contact-card .icon {
-    font-size: 1.25em;
-    margin-bottom: 0.15em;
-}
-
-#footer .contact-card .icon.fa-envelope {
-    color: #d52349;
-}
-
-#footer .contact-card .icon.fa-whatsapp {
-    color: #25d366;
+    font-size: 1.1em;
+    margin-bottom: 0.1em;
 }
 
 #footer .contact-card h3 {
     margin-bottom: 0.05em;
-    font-size: 1.05em;
+    font-size: 0.95em;
+}
+
+#footer .contact-card p {
+    font-size: 0.85em;
+    margin-bottom: 0;
 }
 
 #copyright {
     border-top: solid 1px rgba(255, 255, 255, 0.05);
     padding-top: 1em;
-    margin-top: 0.5em;
+    margin-top: 1em;
+}
+
+/* Footer Map Styles */
+#footer .map-container {
+    margin-top: 0.25em;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#footer .map-container iframe {
+    display: block;
+    width: 100%;
+    height: 180px;
+    /* Reducido de 220px para ser más compacto */
+}
+
+/* Soporte para que las columnas no tengan tanto padding lateral en móviles */
+@media screen and (max-width: 736px) {
+    #footer .map-container iframe {
+        height: 220px;
+    }
+
+    #footer header h2 {
+        font-size: 1.3em;
+    }
 }
