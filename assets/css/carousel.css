@@ -92,11 +92,13 @@
     overflow: hidden;
     border-radius: 4px;
     margin-bottom: 1em;
+    transition: height 0.4s ease-out; /* Add smooth height transition */
 }
 
 .inner-carousel-track {
     display: flex;
     transition: transform 0.4s ease-out;
+    align-items: flex-start; /* Ensure items don't stretch to max height */
 }
 
 .inner-carousel-item {

@@ -37,6 +37,31 @@
                 var translateX = -(currentIndex * itemWidth);
                 $track.css('transform', 'translateX(' + translateX + 'px)');
 
+                // Update height for inner carousel
+                if (!isMain) {
+                    var $currentItem = $items.eq(currentIndex);
+                    var $img = $currentItem.find('img');
+
+                    // Function to set height
+                    var setHeight = function () {
+                        var height = $currentItem.outerHeight();
+                        if (height > 0) {
+                            $container.css('height', height + 'px');
+                        }
+                    };
+
+                    // If image is loaded, set height immediately
+                    if ($img.length && $img[0].complete) {
+                        setHeight();
+                    } else if ($img.length) {
+                        // Otherwise wait for load
+                        $img.on('load', setHeight);
+                    } else {
+                        // Fallback if no image
+                        setHeight();
+                    }
+                }
+
                 var $dots = $dotsContainer.find('.dot');
                 if ($dots.length && isMain) {
                     $dots.removeClass('active');
