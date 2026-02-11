@@ -62,6 +62,17 @@
                     }
                 }
 
+                var $prev = $container.find(isMain ? '.carousel-prev' : '.inner-prev');
+                var $next = $container.find(isMain ? '.carousel-next' : '.inner-next');
+
+                if ($items.length <= itemsToShow) {
+                    $prev.hide();
+                    $next.hide();
+                } else {
+                    $prev.show();
+                    $next.show();
+                }
+
                 var $dots = $dotsContainer.find('.dot');
                 if ($dots.length && isMain) {
                     $dots.removeClass('active');
@@ -108,17 +119,27 @@
             });
 
             if (isMain) {
-                var autoPlayInterval = setInterval(function () {
-                    $container.find('.carousel-next').trigger('click');
-                }, 5000);
+                var autoPlayInterval = null;
 
-                $container.hover(function () {
-                    clearInterval(autoPlayInterval);
-                }, function () {
-                    autoPlayInterval = setInterval(function () {
-                        $container.find('.carousel-next').trigger('click');
-                    }, 5000);
-                });
+                var startAutoPlay = function () {
+                    if (!autoPlayInterval) {
+                        autoPlayInterval = setInterval(function () {
+                            $container.find('.carousel-next').trigger('click');
+                        }, 3000);
+                    }
+                };
+
+                var stopAutoPlay = function () {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                };
+
+                startAutoPlay();
+
+                $container.on('mouseenter', stopAutoPlay)
+                    .on('mouseleave', startAutoPlay);
             }
 
             setTimeout(updateCarousel, 150);
