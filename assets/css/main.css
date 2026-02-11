@@ -3079,3 +3079,13 @@ ul.social li a.fa-google-plus:hover {
 	}
 
 }
+
+/* Utility functions */
+.spacer {
+	margin: 1em 0;
+	border: 0;
+}
+
+.no-border {
+	border: 0;
+}
