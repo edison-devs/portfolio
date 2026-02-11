@@ -7,7 +7,7 @@ function startTypingEffect(elementId, phrases, speed = 80, delay = 2000) {
     function type() {
         let currentPhrase = phrases[phraseIndex];
 
-        // Formateo de JSON
+        // JSON formatting
         if (typeof currentPhrase === 'object') {
             currentPhrase = JSON.stringify(currentPhrase, null, 2);
             element.style.fontFamily = "'Fira Code', monospace";
