@@ -30,5 +30,22 @@
 .technologies-section .badges-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 15px;
+    /* Increased gap for icons */
+    justify-content: center;
+    /* Center icons as they look better centered with just icons */
+}
+
+.technologies-section .badges-container img {
+    height: 40px;
+    /* Standard size for icons */
+    width: auto;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    /* Slight shadow for visibility */
+}
+
+.technologies-section .badges-container img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
