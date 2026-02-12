@@ -1,5 +1,12 @@
 {
     "es": {
+        "typing": {
+            "welcome": "¡Bienvenido a mi portafolio!",
+            "role": "Backend & Fullstack",
+            "status": "Disponible",
+            "coffee_driven": true,
+            "title": "Ingeniero en Informática"
+        },
         "nav": {
             "principal": "Principal",
             "extras": "Extras"
@@ -122,6 +129,13 @@
         }
     },
     "en": {
+        "typing": {
+            "welcome": "Welcome to my portfolio!",
+            "role": "Backend & Fullstack",
+            "status": "Available",
+            "coffee_driven": true,
+            "title": "Computer Science Engineer"
+        },
         "nav": {
             "principal": "Home",
             "extras": "Extras"

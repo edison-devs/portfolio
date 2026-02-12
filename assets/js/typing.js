@@ -1,3 +1,41 @@
+let typingAnimation = null;
+let translations = {};
+let currentLang = localStorage.getItem('language') || 'es';
+
+// Load translations
+async function loadTypingTranslations() {
+    try {
+        const response = await fetch('assets/js/i18n.json');
+        translations = await response.json();
+        startTypingWithCurrentLanguage();
+    } catch (error) {
+        console.error('Error loading typing translations:', error);
+    }
+}
+
+function getTypingContent(lang) {
+    const t = translations[lang]?.typing;
+    if (!t) return [];
+
+    return [
+        t.welcome,
+        {
+            role: t.role,
+            status: t.status,
+            coffee_driven: t.coffee_driven
+        },
+        t.title
+    ];
+}
+
+function startTypingWithCurrentLanguage() {
+    const content = getTypingContent(currentLang);
+    if (typingAnimation) {
+        clearTimeout(typingAnimation);
+    }
+    startTypingEffect('typing-text', content);
+}
+
 function startTypingEffect(elementId, phrases, speed = 80, delay = 2000) {
     const element = document.getElementById(elementId);
     let phraseIndex = 0;
@@ -30,22 +68,18 @@ function startTypingEffect(elementId, phrases, speed = 80, delay = 2000) {
         }
 
         charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
-        setTimeout(type, typeSpeed);
+        typingAnimation = setTimeout(type, typeSpeed);
     }
 
     type();
 }
 
-const content = [
-    "¡Bienvenido a mi portafolio!",
-    {
-        role: "Backend & Fullstack",
-        status: "Disponible",
-        coffee_driven: true
-    },
-    "Ingeniero en Informática",
-];
+// Listen for language changes
+window.addEventListener('languageChanged', (e) => {
+    currentLang = e.detail.language;
+    startTypingWithCurrentLanguage();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
-    startTypingEffect('typing-text', content);
+    loadTypingTranslations();
 });

@@ -68,6 +68,11 @@
         currentLang = currentLang === 'es' ? 'en' : 'es';
         localStorage.setItem('language', currentLang);
         applyTranslations();
+
+        // Dispatch event for typing animation
+        window.dispatchEvent(new CustomEvent('languageChanged', {
+            detail: { language: currentLang }
+        }));
     }
 
     // Initialize
