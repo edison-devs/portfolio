@@ -131,10 +131,35 @@
   }
 }
 
-/* MEDIA QUERY: Solo para ajustar tamaño de fuente, sin romper el centrado */
-@media (max-width: 600px) {
+/* Responsive adjustments specifically for the typing text */
+@media screen and (max-width: 768px) {
+  #typing-text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .banner-container {
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+  }
+
   #typing-text {
     font-size: 16px;
-    /* Más pequeño para que el JSON no se desborde */
+    /* Fallback */
+    font-size: clamp(12px, 4.5vw, 18px);
+    /* Fluid sizing */
+    line-height: 1.3;
+    white-space: pre;
+    /* Keeps JSON structure */
+    word-break: keep-all;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #typing-text {
+    font-size: 13px;
+    /* Ensure fit on very small screens */
   }
 }
