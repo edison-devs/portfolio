@@ -1,0 +1,82 @@
+// Language Switcher
+(function () {
+    let translations = {};
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    // Load translations
+    async function loadTranslations() {
+        try {
+            const response = await fetch('assets/js/i18n.json');
+            translations = await response.json();
+            applyTranslations();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+        }
+    }
+
+    // Apply translations to the page
+    function applyTranslations() {
+        const page = document.body.classList.contains('homepage') ? 'index' : 'extras';
+        const lang = translations[currentLang];
+
+        if (!lang) return;
+
+        // Update language button
+        const langBtn = document.getElementById('lang-toggle');
+        if (langBtn) {
+            langBtn.textContent = currentLang === 'es' ? 'ENG' : 'ESP';
+        }
+
+        // Update navigation
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let value = lang;
+
+            for (const k of keys) {
+                value = value[k];
+                if (!value) break;
+            }
+
+            if (value) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = value;
+                } else if (element.hasAttribute('data-i18n-html')) {
+                    element.innerHTML = value;
+                } else {
+                    element.textContent = value;
+                }
+            }
+        });
+
+        // Update meta tags
+        if (lang[page] && lang[page].pageTitle) {
+            document.title = lang[page].pageTitle;
+        }
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription && lang[page] && lang[page].metaDescription) {
+            metaDescription.setAttribute('content', lang[page].metaDescription);
+        }
+
+        // Update html lang attribute
+        document.documentElement.lang = currentLang;
+    }
+
+    // Toggle language
+    function toggleLanguage() {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        localStorage.setItem('language', currentLang);
+        applyTranslations();
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTranslations();
+
+        const langBtn = document.getElementById('lang-toggle');
+        if (langBtn) {
+            langBtn.addEventListener('click', toggleLanguage);
+        }
+    });
+})();
