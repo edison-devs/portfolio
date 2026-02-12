@@ -1961,7 +1961,7 @@ ul.dates {
 ul.dates li {
 	position: relative;
 	border-top: solid 1px #ddd;
-	padding: 1.3em 0 1.3em 6.75em;
+	padding: 1.3em 0 1.3em 8.5em;
 }
 
 ul.dates .date {
@@ -1971,12 +1971,13 @@ ul.dates .date {
 	top: 1.3em;
 	background-color: #d52349;
 	height: 3.5em;
+	width: 7em;
 	text-align: center;
 	color: #fff;
 	line-height: 1em;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	padding: 0.5em 0.75em 0 1em;
+	padding: 1.25em 0 0 0;
 }
 
 ul.dates .date:after {
