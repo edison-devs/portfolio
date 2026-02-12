@@ -2979,6 +2979,19 @@ ul.social li a.fa-google-plus:hover {
 		padding-left: 6em;
 	}
 
+	ul.dates .date {
+		width: 5em;
+		font-size: 0.85em;
+		padding: 1em 0 0 0;
+		height: 3em;
+	}
+
+	ul.dates .date:after {
+		border-left: solid 1em #d52349;
+		border-top: solid 1.5em transparent;
+		border-bottom: solid 1.5em transparent;
+	}
+
 	ul.dates h3 {
 		margin: 0 0 0.5em 0;
 	}

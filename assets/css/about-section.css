@@ -49,3 +49,24 @@
     transform: scale(1.15);
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .technologies-section .badges-container {
+        gap: 10px;
+    }
+
+    .technologies-section .badges-container img {
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .technologies-section .badges-container {
+        gap: 8px;
+    }
+
+    .technologies-section .badges-container img {
+        height: 28px;
+    }
+}
