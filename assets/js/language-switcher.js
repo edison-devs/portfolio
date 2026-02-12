@@ -22,9 +22,9 @@
         if (!lang) return;
 
         // Update language button
-        // Update language button(s)
-        document.querySelectorAll('.lang-toggle-link').forEach(btn => {
-            btn.textContent = currentLang === 'es' ? 'ENG' : 'ESP';
+        // Update language toggle checkbox(es)
+        document.querySelectorAll('.lang-toggle-checkbox').forEach(checkbox => {
+            checkbox.checked = currentLang === 'en';
         });
 
         // Update navigation
@@ -79,11 +79,16 @@
     document.addEventListener('DOMContentLoaded', function () {
         loadTranslations();
 
-        // Use event delegation for language toggle buttons (supports mobile menu)
-        document.addEventListener('click', function (e) {
-            if (e.target && e.target.classList.contains('lang-toggle-link')) {
-                e.preventDefault();
-                toggleLanguage();
+        // Use event delegation for language toggle checkboxes (supports mobile menu)
+        document.addEventListener('change', function (e) {
+            if (e.target && e.target.classList.contains('lang-toggle-checkbox')) {
+                // Determine new language based on checkbox state
+                // If checked -> English (en), optimized for "ES (unchecked) vs EN (checked)"
+                const newLang = e.target.checked ? 'en' : 'es';
+
+                if (currentLang !== newLang) {
+                    toggleLanguage();
+                }
             }
         });
     });
