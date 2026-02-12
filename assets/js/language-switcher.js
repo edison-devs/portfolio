@@ -22,10 +22,10 @@
         if (!lang) return;
 
         // Update language button
-        const langBtn = document.getElementById('lang-toggle');
-        if (langBtn) {
-            langBtn.textContent = currentLang === 'es' ? 'ENG' : 'ESP';
-        }
+        // Update language button(s)
+        document.querySelectorAll('.lang-toggle-link').forEach(btn => {
+            btn.textContent = currentLang === 'es' ? 'ENG' : 'ESP';
+        });
 
         // Update navigation
         document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -79,9 +79,12 @@
     document.addEventListener('DOMContentLoaded', function () {
         loadTranslations();
 
-        const langBtn = document.getElementById('lang-toggle');
-        if (langBtn) {
-            langBtn.addEventListener('click', toggleLanguage);
-        }
+        // Use event delegation for language toggle buttons (supports mobile menu)
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('lang-toggle-link')) {
+                e.preventDefault();
+                toggleLanguage();
+            }
+        });
     });
 })();
