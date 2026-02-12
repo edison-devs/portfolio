@@ -85,7 +85,7 @@
             "expFacilitadorLink": "@academialovelace.fb",
             "expAprendizajeTitle": "Aprendizaje Autónomo y Trayectoria",
             "expAprendizajeDesc": "Constantemente me estoy <strong>educando</strong>, tanto de forma <em>académica</em> como <em>autodidacta</em>, para mantenerme al día con las tecnologías emergentes. Mi enfoque actual se centra en el <strong>desarrollo Backend</strong> y el uso de <strong>Inteligencia Artificial</strong> en soluciones empresariales. He estado involucrado en el área de la informática <strong>desde los 8 años</strong>, iniciando con cursos básicos de informática y evolucionando hacia áreas más especializadas como <em>reparación de teléfonos inteligentes</em>, <em>mantenimiento de hardware</em> y el <em>uso de sistemas empresariales</em>. Esta trayectoria me ha permitido desarrollar una visión integral de la tecnología, desde el hardware hasta el software empresarial.",
-            "portfolioTitle": "My Portfolio",
+            "portfolioTitle": "Mi Portafolio",
             "projectSeguridad": "Sistema de Seguridad Electrónico",
             "projectSeguridadSubtitle": "Sistema de Orquestas Núcleo Rubio",
             "projectSeguridadDesc": "Sistema integral de seguridad con <strong>ESP8266</strong> y autenticación biométrica. Incluye detección de movimiento PIR, control de acceso mediante huella dactilar y una interfaz de escritorio desarrollada con <em>Flet</em>. Permite gestión de usuarios y envía notificaciones en tiempo real a <em>Slack</em>.",
