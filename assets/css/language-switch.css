@@ -80,19 +80,24 @@ input:checked+.slider:before {
 .lang-es {
     margin-right: auto;
     opacity: 1;
+    transition: opacity 0.3s;
 }
 
 .lang-en {
     margin-left: auto;
-    opacity: 0.5;
+    opacity: 0.3;
+    /* Dimmed by default */
+    transition: opacity 0.3s;
 }
 
 input:checked+.slider .lang-es {
-    opacity: 0.5;
+    opacity: 0.3;
+    /* Dim ES when EN is active */
 }
 
 input:checked+.slider .lang-en {
     opacity: 1;
+    /* Highlight EN when active */
 }
 
 /* Hover effect */
@@ -105,4 +110,47 @@ input:checked+.slider .lang-en {
     .lang-switch-container {
         padding: 10px;
     }
+}
+
+/* Mobile NavPanel Specific Styles */
+#navPanel .lang-switch-container {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+    /* Reduced padding */
+    margin-top: 0;
+    /* Removed margin */
+    border-top: solid 1px rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.1);
+    /* Slight background to separate */
+}
+
+#navPanel .switch {
+    transform: scale(1.3);
+    /* Bigger for easier touch */
+}
+
+/* Ensure text is visible in dark mobile menu */
+#navPanel .slider {
+    background-color: #4a4a4a;
+    /* Lighter gray for better visibility */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#navPanel .lang-en,
+#navPanel .lang-es {
+    font-weight: 800;
+    /* Bolder text */
+    font-size: 10px;
+    /* Adjust size for the scaled switch */
+    color: #ffffff;
+    opacity: 1 !important;
+    /* Force visibility */
+}
+
+/* Active state in mobile */
+#navPanel input:checked+.slider {
+    background-color: #d52349;
+    border-color: #d52349;
 }

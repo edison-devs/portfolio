@@ -7,7 +7,7 @@
 	$.fn.navList = function () {
 
 		var $this = $(this);
-		$a = $this.find('a'),
+		$a = $this.find('a, .lang-switch-container'),
 			b = [];
 
 		$a.each(function () {
@@ -18,16 +18,24 @@
 				target = $this.attr('target'),
 				className = $this.attr('class') || '';
 
-			b.push(
-				'<a ' +
-				'class="link depth-' + indent + (className ? ' ' + className : '') + '"' +
-				((typeof target !== 'undefined' && target != '') ? ' target="' + target + '"' : '') +
-				((typeof href !== 'undefined' && href != '') ? ' href="' + href + '"' : '') +
-				'>' +
-				'<span class="indent-' + indent + '"></span>' +
-				$this.text() +
-				'</a>'
-			);
+			if ($this.hasClass('lang-switch-container')) {
+				b.push(
+					'<div class="link depth-' + indent + (className ? ' ' + className : '') + '">' +
+					$this.html() +
+					'</div>'
+				);
+			} else {
+				b.push(
+					'<a ' +
+					'class="link depth-' + indent + (className ? ' ' + className : '') + '"' +
+					((typeof target !== 'undefined' && target != '') ? ' target="' + target + '"' : '') +
+					((typeof href !== 'undefined' && href != '') ? ' href="' + href + '"' : '') +
+					'>' +
+					'<span class="indent-' + indent + '"></span>' +
+					$this.text() +
+					'</a>'
+				);
+			}
 
 		});
 
